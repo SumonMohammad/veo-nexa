@@ -5,6 +5,7 @@ import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api/v1');
   app.use(express.json());
   app.use(new HmacAuthMiddleware().use);
   await app.listen(3000);
